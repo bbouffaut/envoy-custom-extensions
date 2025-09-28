@@ -94,7 +94,7 @@ EXTENSIONS = {
     # Network filters
     #
 
-    "envoy.filters.network.client_ssl_auth":            "//source/extensions/filters/network/client_ssl_auth:config",
+   # "envoy.filters.network.client_ssl_auth":            "//source/extensions/filters/network/client_ssl_auth:config",
    # "envoy.filters.network.direct_response":            "//source/extensions/filters/network/direct_response:config",
    # "envoy.filters.network.dubbo_proxy":                "//source/extensions/filters/network/dubbo_proxy:config",
     # "envoy.filters.network.echo":                       "//source/extensions/filters/network/echo:config",
@@ -213,3 +213,5 @@ EXTENSIONS = {
 # need to directly reference Envoy extensions.
 EXTENSION_CONFIG_VISIBILITY = ["//:extension_config"]
 EXTENSION_PACKAGE_VISIBILITY = ["//:extension_library"]
+CONTRIB_EXTENSION_PACKAGE_VISIBILITY = ["//:extension_library"]
+LEGACY_ALWAYSLINK = 0
