@@ -1,28 +1,26 @@
-EXTENSIONS = [
-	# Core HTTP path
-	"envoy.filters.network.http_connection_manager",
-	"envoy.filters.http.router",
+# See bazel/README.md for details on how this system works.
+# envoy-custom-extensions/extensions_build_config.bzl
 
-	# Cluster factories used by Kourier bootstrap/xDS
-	"envoy.clusters.static",
-	"envoy.clusters.strict_dns",
-	"envoy.clusters.logical_dns",
-	"envoy.clusters.eds",
+EXTENSIONS = {
+	# ---- Cluster factories ----
+	"envoy.clusters.static":      "//source/extensions/clusters/static:static_cluster_lib",
+	"envoy.clusters.strict_dns":  "//source/extensions/clusters/strict_dns:strict_dns_cluster_lib",
+	"envoy.clusters.logical_dns": "//source/extensions/clusters/logical_dns:logical_dns_cluster_lib",
+	"envoy.clusters.eds":         "//source/extensions/clusters/eds:eds_lib",
 
-	# Upstream HTTP codecs (so HCM can talk to upstreams)
-	"envoy.http.stateful_session",            # optional but common
-	"envoy.http.protocol_options",            # core HTTP options
-	"envoy.upstreams.http.v3.HttpProtocolOptions",  # (if your config references it)
+	# ---- Transport sockets ----
+	"envoy.transport_sockets.raw_buffer":	"//source/extensions/transport_sockets/raw_buffer:config",
+	"envoy.transport_sockets.tls":		"//source/extensions/transport_sockets/tls:config",
 
-	# Transport sockets
-	"envoy.transport_sockets.raw_buffer",
-	"envoy.transport_sockets.tls",
+	# ---- HTTP path (HCM + Router) ----
+	"envoy.filters.network.http_connection_manager":	"//source/extensions/filters/network/http_connection_manager:config",
+	"envoy.filters.http.router":	"//source/extensions/filters/http/router:config",
 
-	# Access loggers commonly referenced by Kourier
-	"envoy.access_loggers.file",
-	"envoy.access_loggers.stdout",
-]
-
+	# ---- Access loggers ----
+	"envoy.access_loggers.file":	"//source/extensions/access_loggers/file:config",
+	# (optional) stderr too:
+	# "envoy.access_loggers.stderr": "//source/extensions/access_loggers/stream:stderr",
+}
 
 # These can be changed to ["//visibility:public"], for  downstream builds which
 # need to directly reference Envoy extensions.
