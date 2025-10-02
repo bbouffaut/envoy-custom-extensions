@@ -4,7 +4,7 @@
 EXTENSIONS = {
 	# ---- Cluster factories ----
 	"envoy.clusters.static":      "//source/extensions/clusters/static:static_cluster_lib",
-	"envoy.cluster.strict_dns":  "//source/extensions/clusters/strict_dns:strict_dns_cluster_lib",
+	"envoy.clusters.strict_dns":  "//source/extensions/clusters/strict_dns:strict_dns_cluster_lib",
 	"envoy.clusters.logical_dns": "//source/extensions/clusters/logical_dns:logical_dns_cluster_lib",
 	"envoy.clusters.eds":         "//source/extensions/clusters/eds:eds_lib",
 
@@ -24,7 +24,7 @@ EXTENSIONS = {
 
 # These can be changed to ["//visibility:public"], for  downstream builds which
 # need to directly reference Envoy extensions.
-EXTENSION_CONFIG_VISIBILITY = ["//:extension_config"]
-EXTENSION_PACKAGE_VISIBILITY = ["//:extension_library"]
-CONTRIB_EXTENSION_PACKAGE_VISIBILITY = ["//:extension_library"]
-LEGACY_ALWAYSLINK = 0
+EXTENSION_CONFIG_VISIBILITY = ["//visibility:public"]
+EXTENSION_PACKAGE_VISIBILITY = ["//visibility:public"]
+CONTRIB_EXTENSION_PACKAGE_VISIBILITY = ["//visibility:public"]
+LEGACY_ALWAYSLINK = 1
