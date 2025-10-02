@@ -4,7 +4,7 @@
 EXTENSIONS = {
 	# ---- Cluster factories ----
 	"envoy.clusters.static":      "//source/extensions/clusters/static:static_cluster_lib",
-	"envoy.clusters.strict_dns":  "//source/extensions/clusters/strict_dns:strict_dns_cluster_lib",
+	"envoy.cluster.strict_dns":  "//source/extensions/clusters/strict_dns:strict_dns_cluster_lib",
 	"envoy.clusters.logical_dns": "//source/extensions/clusters/logical_dns:logical_dns_cluster_lib",
 	"envoy.clusters.eds":         "//source/extensions/clusters/eds:eds_lib",
 
